@@ -8,14 +8,9 @@ const PORT = 3000;
 
 app.use(requestIp.mw());
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
 app.get('/api/hello', async function (req,res) {
     const visitorName = req.query.visitor_name;
-    //  req.clientIp
-    const visitorIp = "8.8.8.8";
+    const visitorIp = req.clientIp;
     try {
         //REQUEST TO GET CITY
         const locationResponse = await axios.get(`http://ip-api.com/json/${visitorIp}`);
