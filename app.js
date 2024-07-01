@@ -8,6 +8,10 @@ const PORT = 3000;
 
 app.use(requestIp.mw());
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
 app.get('/api/hello', async function (req,res) {
     const visitorName = req.query.visitor_name;
     //  req.clientIp
